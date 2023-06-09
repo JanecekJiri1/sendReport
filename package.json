@@ -7,13 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "report": "marge cypress/reports/html/.jsons/mochawesome.json cypress/reports/html",
 
-    "echo": "echo \"volaaani 1",
-    "echo2": "echo \"volaaani 2",
-    "echo3": "echo \"volaaani 3",
     "clean-report": "node clean-report.js",
-    "test-email": "npx cypress run --spec cypress/e2e/email.cy.js",
     "send-email": "node send-email.js",
-    "all": "npm-run-all --serial echo clean-report echo2 test-email echo3 send-email"
+    "test-email": "npx cypress run --spec cypress/e2e/email.cy.js",
+    "report-html": "cypress run --config-file run-json-test.js --spec cypress/e2e/email.cy.js",
+  
+    "all": "npm-run-all --continue-on-error --serial clean-report test-email report-html send-email"
+
+
+
   },
   "keywords": [],
   "author": "",
@@ -24,6 +26,7 @@
     "nodemailer": "^6.9.3"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "cypress-mochawesome-reporter": "^3.5.0",
     "cypress-wait-until": "^1.7.2",
     "mochawesome": "^7.1.3",

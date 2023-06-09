@@ -1,31 +1,24 @@
-const sendAnEmail = (message) => {
+const generateReport = require('cypress-mochawesome-reporter/generateReport');
 
-    const nodemailer = require('nodemailer');
-    const sgTransport = require('nodemailer-sendgrid-transport');
-    const options = {
-      auth: {
-        api_user: 'sendgrid_USER',
-        api_key: 'sendgrid_APIKEY'
-      }
+module.exports = (on, config) => {
+  const firstRun = process.env.FIRST_RUN === 'true';
+
+  if (firstRun) {
+    require('cypress-mochawesome-reporter/plugin')(on);
+  }
+
+  on('after:run', (results) => {
+    if (firstRun) {
+      generateReport(Object.assign({}, results, {
+        reportDir: config.reporterOptions.reportDir,
+      }));
     }
-    const client = nodemailer.createTransport(sgTransport(options));
-  
-    const email = {
-      from: 'Teshop',
-      to: 'kleric13@seznam.cz',
-      subject: 'Report',
-      text: message,
-      html: '<b>Hello world</b>'
-    };
-    client.sendMail(email, function(err, info) {
-      return err? err.message : 'Message sent: ' + info.response;
-    });
-  }
-  
-  module.exports = (on, config) => {
-    on('task', {
-      sendMail (message) {
-        return sendAnEmail(message);
-      }
-    })
-  }
+  });
+
+  config.pluginFile = "./cypress/plugins/index.js";
+  this.screenshotOnRunFailure = true;
+
+  // Implementace dalších event listenerů
+
+  return config;
+};

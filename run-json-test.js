@@ -5,7 +5,7 @@ module.exports = defineConfig({
   reporter: 'cypress-mochawesome-reporter', // html reports
   reporterOptions: {
     "reportDir": "cypress/reports",
-    "overwrite": true,
+    "overwrite": false,
     "html": true,
     "json": false
   },
@@ -14,7 +14,7 @@ module.exports = defineConfig({
       config.pluginFile="./cypress/plugins/index.js"
       // implement node event listeners here
       this.screenshotOnRunFailure = true;
-      require('cypress-mochawesome-reporter/plugin')(on); // for html exports
+    //   require('cypress-mochawesome-reporter/plugin')(on); // for html exports
 
     },
   },

@@ -4,10 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const nodemailer = require("nodemailer");
 
-const user = config.auth.user;
-const pass = config.auth.pass;
-
-const config = require('./config');
+const config = require("./config");
 
 async function sendEmail() {
   try {
@@ -17,7 +14,8 @@ async function sendEmail() {
       port: 465,
       secure: true,
       auth: {
-        
+        user: config.auth.user,
+        pass: config.auth.pass,
       },
       tls: {
         rejectUnauthorized: false,
@@ -26,13 +24,14 @@ async function sendEmail() {
 
     // cesty k soubourům co mají být poslány jako příloha
 
-    const screenshotFolder = "cypress/reports/html/screenshots/email.cy.js";
-    const videoFolder = "cypress/reports/html/videos";
-    const htmlFolder = "cypress/reports/html";
+    const screenshotFolder = "cypress/reports/screenshots/email.cy.js";
+    const videoFolder = "cypress/reports/videos";
+    const htmlFolder = "cypress/reports/";
+    const jsonFolder = "cypress/reports/.jsons";
 
     const screenshotFiles = fs
       .readdirSync(screenshotFolder)
-      .filter((file) => file.startsWith("template") && file.endsWith(".png"))
+      .filter((file) => file.endsWith(".png"))
       .map((file) => ({
         filename: file,
         path: path.join(screenshotFolder, file),
@@ -45,6 +44,7 @@ async function sendEmail() {
         filename: file,
         path: path.join(videoFolder, file),
       }));
+
     const htmlFiles = fs
       .readdirSync(htmlFolder)
       .filter((file) => file.endsWith(".html"))
@@ -53,7 +53,20 @@ async function sendEmail() {
         path: path.join(htmlFolder, file),
       }));
 
-    const attachments = [...screenshotFiles, ...videoFiles, ...htmlFiles];
+    const jsonFiles = fs
+      .readdirSync(jsonFolder)
+      .filter((file) => file.endsWith(".json"))
+      .map((file) => ({
+        filename: file,
+        path: path.join(jsonFolder, file),
+      }));
+
+    const attachments = [
+      ...screenshotFiles,
+      ...videoFiles,
+      ...htmlFiles,
+      ...jsonFiles,
+    ];
 
     // Nastavení informací o emailu
     const mailOptions = {
