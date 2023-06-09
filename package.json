@@ -1,0 +1,34 @@
+{
+  "name": "emailreport",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "report": "marge cypress/reports/html/.jsons/mochawesome.json cypress/reports/html",
+
+    "echo": "echo \"volaaani 1",
+    "echo2": "echo \"volaaani 2",
+    "echo3": "echo \"volaaani 3",
+    "clean-report": "node clean-report.js",
+    "test-email": "npx cypress run --spec cypress/e2e/email.cy.js",
+    "send-email": "node send-email.js",
+    "all": "npm-run-all --serial echo clean-report echo2 test-email echo3 send-email"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^12.11.0",
+    "mocha": "^10.2.0",
+    "nodemailer": "^6.9.3"
+  },
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^3.5.0",
+    "cypress-wait-until": "^1.7.2",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0",
+    "npm-run-all": "^4.1.5"
+  }
+}
