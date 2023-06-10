@@ -11,7 +11,7 @@ module.exports = defineConfig({
   },
   e2e: {
     setupNodeEvents(on, config) {
-      config.pluginFile="./cypress/plugins/index.js"
+      // config.pluginFile="./cypress/plugins/index.js"
       // implement node event listeners here
       this.screenshotOnRunFailure = true;
       require('cypress-mochawesome-reporter/plugin')(on); // for html exports

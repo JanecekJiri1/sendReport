@@ -5,9 +5,9 @@
     "passes": 1,
     "pending": 1,
     "failures": 1,
-    "start": "2023-06-09T21:20:55.290Z",
-    "end": "2023-06-09T21:21:18.116Z",
-    "duration": 22826,
+    "start": "2023-06-10T21:12:38.939Z",
+    "end": "2023-06-10T21:12:48.495Z",
+    "duration": 9556,
     "testsRegistered": 3,
     "passPercent": 50,
     "pendingPercent": 33.33333333333333,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "4cb36194-209a-451c-88be-2fef3a22ce00",
+      "uuid": "475f37c8-41c5-45ab-8b00-9837d346f790",
       "title": "",
       "fullFile": "cypress\\e2e\\email.cy.js",
       "file": "cypress\\e2e\\email.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "d466f97c-b972-4a6e-9459-8c0cafbaeea9",
+          "uuid": "2d71cb6b-7338-4c3d-9dae-53fe0795b877",
           "title": "template spec",
           "fullFile": "",
           "file": "",
@@ -38,17 +38,17 @@
               "title": "passes",
               "fullTitle": "template spec passes",
               "timedOut": null,
-              "duration": 9374,
+              "duration": 849,
               "state": "passed",
-              "speed": "medium",
+              "speed": "fast",
               "pass": true,
               "fail": false,
               "pending": false,
               "context": "{\n  \"title\": \"cypress-mochawesome-reporter-videos-passed\",\n  \"value\": \"cypress\\\\e2e\\\\email.cy.js\"\n}",
               "code": "cy.get('h1').should('have.text', 'Kitchen Sink');",
               "err": {},
-              "uuid": "129ac365-aaa1-463a-9ca2-5b859b52dee5",
-              "parentUUID": "d466f97c-b972-4a6e-9459-8c0cafbaeea9",
+              "uuid": "243a7927-be3a-404b-9658-9e72564260b4",
+              "parentUUID": "2d71cb6b-7338-4c3d-9dae-53fe0795b877",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "fail",
               "fullTitle": "template spec fail",
               "timedOut": null,
-              "duration": 5591,
+              "duration": 4643,
               "state": "failed",
               "speed": null,
               "pass": false,
@@ -69,8 +69,8 @@
                 "estack": "AssertionError: Timed out retrying after 4000ms: expected '<p>' to have a length above 5 but got 1\n    at Context.eval (webpack:///./cypress/e2e/email.cy.js:15:65)",
                 "diff": "- 1\n+ 5\n"
               },
-              "uuid": "7093558c-4ef3-4eb7-8c61-c8ac0884027a",
-              "parentUUID": "d466f97c-b972-4a6e-9459-8c0cafbaeea9",
+              "uuid": "a5a21aa3-2497-43c2-9e6f-0352a75fe906",
+              "parentUUID": "2d71cb6b-7338-4c3d-9dae-53fe0795b877",
               "isHook": false,
               "skipped": false
             },
@@ -87,24 +87,24 @@
               "context": "[\n  {\n    \"title\": \"cypress-mochawesome-reporter-videos-pending\",\n    \"value\": \"cypress\\\\e2e\\\\email.cy.js\"\n  },\n  {\n    \"title\": \"cypress-mochawesome-reporter-screenshots\",\n    \"value\": [\n      [\n        \"\\\\email.cy.js\\\\endShoot.png\"\n      ]\n    ]\n  }\n]",
               "code": "cy.get(':nth-child(3) > .container > .row > #utilities > h2').should('be.visible');",
               "err": {},
-              "uuid": "f0d8080e-22d1-4692-92b2-0845d62ab8de",
-              "parentUUID": "d466f97c-b972-4a6e-9459-8c0cafbaeea9",
+              "uuid": "b5572fe3-ca7b-4f92-aba1-9eefcab76d94",
+              "parentUUID": "2d71cb6b-7338-4c3d-9dae-53fe0795b877",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "129ac365-aaa1-463a-9ca2-5b859b52dee5"
+            "243a7927-be3a-404b-9658-9e72564260b4"
           ],
           "failures": [
-            "7093558c-4ef3-4eb7-8c61-c8ac0884027a"
+            "a5a21aa3-2497-43c2-9e6f-0352a75fe906"
           ],
           "pending": [
-            "f0d8080e-22d1-4692-92b2-0845d62ab8de"
+            "b5572fe3-ca7b-4f92-aba1-9eefcab76d94"
           ],
           "skipped": [],
-          "duration": 14965,
+          "duration": 5492,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

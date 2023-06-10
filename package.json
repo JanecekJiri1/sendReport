@@ -6,32 +6,23 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "report": "marge cypress/reports/html/.jsons/mochawesome.json cypress/reports/html",
-
     "clean-report": "node clean-report.js",
     "send-email": "node send-email.js",
     "test-email": "npx cypress run --spec cypress/e2e/email.cy.js",
-    "report-html": "cypress run --config-file run-json-test.js --spec cypress/e2e/email.cy.js",
-  
-    "all": "npm-run-all --continue-on-error --serial clean-report test-email report-html send-email"
-
-
-
+    "report-json": "cypress run --config-file run-json-test.js --spec cypress/e2e/email.cy.js",
+    "all": "npm-run-all --continue-on-error --serial clean-report test-email report-json send-email"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cypress": "^12.11.0",
+    "cypress-mochawesome-reporter": "^3.5.0",
     "mocha": "^10.2.0",
     "nodemailer": "^6.9.3"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3",
-    "cypress-mochawesome-reporter": "^3.5.0",
-    "cypress-wait-until": "^1.7.2",
     "mochawesome": "^7.1.3",
-    "mochawesome-merge": "^4.3.0",
-    "mochawesome-report-generator": "^6.2.0",
     "npm-run-all": "^4.1.5"
   }
 }
